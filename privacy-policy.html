@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | 360 Panorama & City Views</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Set Inter font for the interface */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            line-height: 1.6;
+        }
+        .section-header {
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 md:p-12 lg:p-16">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-12 border border-gray-200">
+        
+        <header class="mb-8 border-b pb-4">
+            <h1 class="text-4xl font-extrabold text-blue-700">Privacy Policy</h1>
+            <p class="text-lg text-gray-600 mt-2">Applicable to App: <span id="app-name-placeholder" class="font-bold text-blue-500">[Loading App Name...]</span></p>
+            <p class="text-sm text-gray-400">Effective Date: October 18, 2025</p>
+        </header>
+
+        <section class="text-gray-700">
+
+            <h2 class="text-2xl font-semibold text-gray-800 section-header">1. Introduction</h2>
+            <p class="mb-4">This privacy policy describes how <span id="store-name-placeholder" class="font-semibold text-blue-600">[Developer]</span> (hereinafter referred to as "We" or "Us") collects, uses, protects, and shares your personal information related to your use of the **<span class="font-bold text-blue-500" id="app-name-placeholder-2"></span>** application (hereinafter referred to as the "App").</p>
+            
+            <h2 class="text-2xl font-semibold text-gray-800 section-header">2. Information Collection and Use</h2>
+            
+            <h3 class="text-xl font-semibold mt-4 text-gray-700">2.1. Personal Information</h3>
+            <p class="mt-2 mb-3">This App does not directly collect any Personally Identifiable Information (PII), such as your name, address, phone number, or email, unless you voluntarily provide it through support channels (e.g., email). </p>
+
+            <h3 class="text-xl font-semibold mt-4 text-gray-700">2.2. Image-Related Data</h3>
+            <ul class="list-disc ml-6 space-y-2 mb-4">
+                <li>**Library Access:** When you select a 2D image from your library to create a 360-degree panoramic simulation, the App will request permission to access your device's photo library.</li>
+                <li>**Data Processing:** The selected image is **processed solely on your device** to generate the 360 simulation. We do not collect, store, or upload the original or processed image to our servers.</li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold mt-4 text-gray-700">2.3. Usage and Device Data (Non-PII)</h3>
+            <p class="mt-2 mb-3">We may collect automated data to improve our services:</p>
+            <ul class="list-disc ml-6 space-y-2">
+                <li>**Device Information:** Device type, operating system, anonymous device ID.</li>
+                <li>**Interaction Data:** Functions used (e.g., City Search, number of 360 images created), time spent in the App, crash reports.</li>
+                <li>**Purpose:** To analyze trends, administer the App, track users' movements, and gather broad demographic information.</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-gray-800 section-header">3. Links to Other Websites</h2>
+            <p class="mb-4">The App may contain links to third-party websites or services (e.g., results from the city search feature). We have no control over and assume no responsibility for the content or privacy policies of any third-party sites or services. You should review the privacy policies of any third-party sites.</p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 section-header">4. Security</h2>
+            <p class="mb-4">We implement standard security measures to protect collected data. However, please remember that no method of transmission over the Internet, or method of electronic storage is 100% secure.</p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 section-header">5. Changes to This Privacy Policy</h2>
+            <p class="mb-4">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            
+            <h2 class="text-2xl font-semibold text-gray-800 section-header">6. Contact Us</h2>
+            <p class="mb-4">If you have any questions about this Privacy Policy, please contact us at:</p>
+            <p class="font-semibold text-blue-600">Email: support@<span id="store-domain-placeholder">yourcompany.com</span></p>
+
+        </section>
+
+        <footer class="mt-10 pt-4 border-t border-gray-300 text-sm text-center text-gray-500">
+            <p>&copy; 2025 <span id="store-name-placeholder-footer">Your Dev Company</span>. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * Function to parse query parameters from the URL.
+         */
+        function getQueryParams() {
+            const params = {};
+            // Get the query string part of the URL, starting after '?'
+            const queryString = window.location.search.substring(1);
+            
+            if (!queryString) {
+                return params;
+            }
+
+            // Split the string into individual key=value pairs
+            const pairs = queryString.split('&');
+            
+            pairs.forEach(pair => {
+                // Decode the pair (handles %20 for spaces)
+                const decodedPair = decodeURIComponent(pair);
+                const [key, value] = decodedPair.split('=');
+                
+                // Store the key-value pair
+                if (key && value) {
+                    params[key.trim()] = value.trim();
+                }
+            });
+
+            return params;
+        }
+
+        /**
+         * Function to update the HTML content based on URL parameters.
+         */
+        function updatePolicyContent() {
+            const params = getQueryParams();
+            
+            // Default values
+            const defaultAppName = "360 Panorama Image App";
+            const defaultStoreName = "SelaNova";
+            const defaultStoreDomain = "selanova.com"; // Default contact domain
+            
+            // Get parameters, prioritizing URL parameters
+            const appName = params.app || defaultAppName;
+            const storeName = params.store || defaultStoreName;
+            
+            // Use the specified default contact domain
+            const storeDomain = defaultStoreDomain;
+
+
+            // Update App Name (3 locations: title, header, section 1)
+            document.title = "Privacy Policy | " + appName;
+            const appNamePlaceholders = document.querySelectorAll('#app-name-placeholder, #app-name-placeholder-2');
+            appNamePlaceholders.forEach(element => {
+                element.textContent = appName;
+            });
+
+            // Update Developer/Store Name (2 locations)
+            const storeNamePlaceholders = document.querySelectorAll('#store-name-placeholder, #store-name-placeholder-footer');
+            storeNamePlaceholders.forEach(element => {
+                element.textContent = storeName;
+            });
+
+            // Update Contact Domain
+            const storeDomainPlaceholder = document.getElementById('store-domain-placeholder');
+            if(storeDomainPlaceholder) {
+                storeDomainPlaceholder.textContent = storeDomain;
+            }
+        }
+
+        // Run the update function when the page loads
+        document.addEventListener('DOMContentLoaded', updatePolicyContent);
+    </script>
+
+</body>
+</html>
